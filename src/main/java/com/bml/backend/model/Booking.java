@@ -1,5 +1,6 @@
 package com.bml.backend.model;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -17,20 +18,24 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "lawyer_id", nullable = false)
     private Lawyer lawyer;
 
-    @NotBlank
-    private String clientName;
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 
     @Email
     @NotBlank
     private String clientEmail;
 
     @Column(nullable = false)
-    private OffsetDateTime startTime;
+    private LocalDate date;
 
+    // 🔹 Booking status (e.g., PENDING, CONFIRMED, CANCELED)
     @Column(nullable = false)
-    private OffsetDateTime endTime;
-
+    private String status;
 }
+
+
