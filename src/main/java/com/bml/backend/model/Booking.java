@@ -1,7 +1,6 @@
 package com.bml.backend.model;
 
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -37,5 +36,3 @@ public class Booking {
     @Column(nullable = false)
     private String status;
 }
-
-
