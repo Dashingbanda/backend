@@ -26,7 +26,6 @@ public class BookingService {
         this.clientRepository = clientRepository;
     }
 
-    // ✅ Create a booking
     public Booking createBooking(Long clientId, Long lawyerId, LocalDate date) {
         Client client = clientRepository.findById(clientId)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found with id " + clientId));
@@ -49,26 +48,22 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    // ✅ Get all bookings
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
-    // ✅ Get bookings by client
-    public List<Booking> getBookingsByClient(Long clientId) {
+    public List<Booking> getBookingsByClientId(Long clientId) {
         Client client = clientRepository.findById(clientId)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found with id " + clientId));
         return bookingRepository.findByClient(client);
     }
 
-    // ✅ Get bookings by lawyer
-    public List<Booking> getBookingsByLawyer(Long lawyerId) {
+    public List<Booking> getBookingsByLawyerId(Long lawyerId) {
         Lawyer lawyer = lawyerRepository.findById(lawyerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Lawyer not found with id " + lawyerId));
         return bookingRepository.findByLawyer(lawyer);
     }
 
-    // ✅ Update booking status (e.g., CONFIRMED, CANCELED)
     public Booking updateBookingStatus(Long bookingId, String status) {
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Booking not found with id " + bookingId));
@@ -77,13 +72,13 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    // ✅ Cancel booking
-    public void cancelBooking(Long bookingId) {
+    public Booking cancelBooking(Long bookingId) {
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Booking not found with id " + bookingId));
 
         booking.setStatus("CANCELED");
         bookingRepository.save(booking);
+        return booking;
     }
 
 }
