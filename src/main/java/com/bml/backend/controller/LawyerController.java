@@ -1,6 +1,7 @@
 package com.bml.backend.controller;
 
-import com.bml.backend.model.Lawyer;
+import com.bml.backend.entity.Lawyer;
+import com.bml.backend.model.LawyerDto;
 import com.bml.backend.service.LawyerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

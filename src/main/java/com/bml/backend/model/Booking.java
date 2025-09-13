@@ -1,6 +1,8 @@
 package com.bml.backend.model;
 
 import java.time.LocalDate;
+
+import com.bml.backend.entity.Lawyer;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -18,7 +20,7 @@ public class Booking {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "lawyer_id", nullable = false)
+    @JoinColumn(name = "lawyerId", nullable = false)
     private Lawyer lawyer;
 
     @ManyToOne

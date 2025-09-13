@@ -1,6 +1,8 @@
 package com.bml.backend.model;
 
 import java.time.OffsetDateTime;
+
+import com.bml.backend.entity.Lawyer;
 import lombok.*;
 import jakarta.persistence.*;
 

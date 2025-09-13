@@ -3,16 +3,19 @@ package com.bml.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Lawyer {
+public class LawyerDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true, updatable = false)
+    private String lawyerId;
 
     @Column(nullable = false)
     private String fullName;

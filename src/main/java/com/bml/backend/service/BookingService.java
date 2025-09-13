@@ -1,9 +1,10 @@
 package com.bml.backend.service;
 
+import com.bml.backend.entity.Lawyer;
 import com.bml.backend.exception.ResourceNotFoundException;
 import com.bml.backend.model.Booking;
 import com.bml.backend.model.Client;
-import com.bml.backend.model.Lawyer;
+import com.bml.backend.model.LawyerDto;
 import com.bml.backend.repository.BookingRepository;
 import com.bml.backend.repository.ClientRepository;
 import com.bml.backend.repository.LawyerRepository;

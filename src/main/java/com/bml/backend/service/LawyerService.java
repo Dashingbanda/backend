@@ -1,9 +1,10 @@
 package com.bml.backend.service;
 
-import com.bml.backend.model.Lawyer;
+import com.bml.backend.entity.Lawyer;
 import com.bml.backend.repository.LawyerRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class LawyerService {
@@ -23,6 +24,13 @@ public class LawyerService {
     }
 
     public Lawyer createLawyer(Lawyer lawyer) {
+        String lawyerId = "lawyer" + UUID.randomUUID().toString().substring(0,8).toUpperCase();
+
+        while(lawyerRepository.existsByLawyerId(lawyerId)) {
+            lawyerId = "lawyer" + UUID.randomUUID().toString().substring(0,8).toUpperCase();
+        }
+
+        lawyer.setLawyerId(lawyerId);
         return lawyerRepository.save(lawyer);
     }
 
